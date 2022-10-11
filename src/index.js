@@ -10,6 +10,7 @@ import { SignUpModal } from "./components";
 
 const App = () => {
   const [useDarkTheme, setUseDarkTheme] = React.useState(false);
+  const [showModal, setShowModal] = React.useState(false);
 
   return (
     <ThemeProvider theme={useDarkTheme ? darkTheme : defaultTheme}>
@@ -27,11 +28,12 @@ const App = () => {
           justifyContent: "space-around"
         }}
       >
-        <PrimaryButton modifiers={["small", "primaryButtonWarning"]}>asdsd</PrimaryButton>
+        <PrimaryButton modifiers={["small", "primaryButtonWarning"]} onClick={() => setShowModal(prevState => !prevState)}>Show Modal</PrimaryButton>
         <SecondaryButton modifiers='large'>Goodbye world</SecondaryButton>
         <TertiaryButton modifiers={["success"]}>Hey world</TertiaryButton>
+        <SignUpModal showModal={showModal} setShowModal={setShowModal} />
       </div>
-      <SignUpModal />
+
       <GlobalStyle />
     </ThemeProvider>
 
